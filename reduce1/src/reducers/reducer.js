@@ -15,7 +15,8 @@ export const initialState = [
     id: 6875678578
   }
 ];
-  
+  //I'm not sure what titleReducer is
+  //I'm not sure what I'm missing here
   export const titleReducer = (state, action) => {
     switch (action.type) {
       case "CHANGE_TITLE":

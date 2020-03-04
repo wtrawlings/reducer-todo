@@ -6,7 +6,15 @@ const Todos = () => {
     console.log(state)
     return (
         <div>
-            
+            <p>Trying to make a todo list with useReducer</p>
+            <form>
+                <input type="text" name="taskText" 
+                //value={this.state.taskText} 
+                //onChange={this.changeHandler} 
+                //had to turn these off to let form show in app
+                />
+                <button type="submit">Add</button>
+            </form>
         </div>
     );
 };
