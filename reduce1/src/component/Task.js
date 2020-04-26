@@ -6,7 +6,7 @@ const Task = props => {
     //are the props my state?
     return (
         <div>
-            <p>{props.task}</p>
+            <p key={props.id} className = {`task${props.task.completed ? " done" : ""} `}>{props.task}</p>
         </div>
     )
     // <div className ={`task${props.task.completed ? " done" : ""} `}> 

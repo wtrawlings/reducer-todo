@@ -14,8 +14,22 @@ const Todos = () => {
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch({type: "ADD_TODO", payload:todo})
+        setTodo("")
+    //either here or in the action- I need to regurn the submit to empty
         //dispatch goes back to reducer.js
         //we use this to choose ACTIONs (Type and Payload)
+    }
+    const clearHandler = (e) => {
+        e.preventDefault()
+        dispatch({type: "REMOVE_COMPLETE", payload:todo})
+    //either here or in the action- I need to regurn the submit to empty
+        //dispatch goes back to reducer.js
+        //we use this to choose ACTIONs (Type and Payload)
+    }
+    const toggleTask = (e) => {
+        e.preventDefault()
+        console.log(state.item)
+        dispatch({type: "TOGGLE_COMPLETE", payload:todo})
     }
 
     return (
@@ -27,12 +41,13 @@ const Todos = () => {
                 onChange={changeHandler} 
                 //had to turn these off to let form show in app
                 />
-                <button type="submit" onClick={submitHandler} >Add</button>
+                <button type="submit" onClick={submitHandler} >Add a Task</button>
+                <button type="submit" onClick={clearHandler}>Remove a Completed Task</button>
             </form>
             {state.map(task => {
                 //console.log(task);  
                 return <Task task={task.item} key={task.id} 
-                //toggleTask={propstoggleTask}
+                onClick={toggleTask}
                  />
                
             })}

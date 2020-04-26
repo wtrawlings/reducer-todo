@@ -20,11 +20,15 @@ export const initialState = [
   //staring at this is making me worse
   export const titleReducer = (state, action) => {
     switch (action.type) {
-      case "CHANGE_TITLE":
-        return { ...state, title: action.payload, editing: false };
-      case "CHANGE_EDIT":
-        return { ...state, editing: true };
-        case "ADD_TODO":
+      // case "CHANGE_TITLE":
+      //   return { ...state, title: action.payload, completed: false };
+      case "TOGGLE_COMPLETE":
+        return { ...state, completed: !state.completed };
+        //toggle complete needs to be accessing a single item so you can change the completion status on that single item
+      case "REMOVE_COMPLETE":
+        return state.filter(task => !task.completed);
+        //how do I remove the completed: true items from the array?
+      case "ADD_TODO":
           console.log()
           return [...state, {completed: false, id:Date.now, item: action.payload}];
           //this return is our add to the text
